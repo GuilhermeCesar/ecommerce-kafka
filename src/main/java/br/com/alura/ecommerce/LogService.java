@@ -5,7 +5,6 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
-import java.util.Collections;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
@@ -19,10 +18,10 @@ public class LogService {
             var records = consumer.poll(Duration.ofMillis(100));
 
             if (!records.isEmpty()) {
-                System.out.println("Encontrei "+records.count() + " registros");
+                System.out.println("Encontrei " + records.count() + " registros");
                 for (var recordEcommerce : records) {
                     System.out.println("---------------------------------");
-                    System.out.println("LOG "+ recordEcommerce.topic());
+                    System.out.println("LOG " + recordEcommerce.topic());
                     System.out.println(recordEcommerce.key());
                     System.out.println(recordEcommerce.value());
                     System.out.println(recordEcommerce.partition());

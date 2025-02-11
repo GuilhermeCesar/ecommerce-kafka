@@ -2,12 +2,19 @@ package br.com.alura.ecommerce;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
+import java.util.Map;
+
 public class EmailService {
 
     public static void main(String[] args) {
         var emailsService = new EmailService();
-        try (var service = new KafkaService(EmailService.class.getSimpleName(),
-                "ECOMMERCE_SEND_EMAIL", emailsService::parse)) {
+        try (var service = new KafkaService(
+                EmailService.class.getSimpleName(),
+                "ECOMMERCE_SEND_EMAIL",
+                emailsService::parse,
+                String.class,
+                Map.of())
+        ) {
             service.run();
         }
     }
@@ -28,9 +35,7 @@ public class EmailService {
         System.out.println("Email sent");
     }
 
-    public interface ConsumerFunction {
-        void consume(ConsumerRecord<String, String> record);
-    }
+
 }
 
 

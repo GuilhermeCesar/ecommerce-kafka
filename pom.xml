@@ -4,8 +4,16 @@
   <groupId>br.com.alura</groupId>
   <artifactId>ecommerce</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
   <name>Archetype - ecomerse-kafka</name>
   <url>http://maven.apache.org</url>
+  <modules>
+    <module>service-email</module>
+    <module>service-fraud-detector</module>
+    <module>log-service</module>
+    <module>service-new-order</module>
+    <module>common-kafka</module>
+  </modules>
 
   <properties>
     <maven.compiler.release>17</maven.compiler.release>
